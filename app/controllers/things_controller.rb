@@ -4,13 +4,17 @@ class ThingsController < ApplicationController
   before_action :set_thing, only: [:show, :update, :destroy]
   before_action :authenticate_user!, only: [:create, :update, :destroy]
   wrap_parameters :thing, include: ["name", "description", "notes"]
-  after_action :verify_authorized
+  after_action :verify_authorized, except: :search
   after_action :verify_policy_scoped, only: [:index]
 
   def index
     authorize Thing
     things = policy_scope(Thing.all)
     @things = ThingPolicy.merge(things)
+  end
+
+  def search
+    @things = Thing.with_tag(search_params[:tag_id])
   end
 
   def show
@@ -64,5 +68,11 @@ class ThingsController < ApplicationController
       params.require(:thing).tap {|p|
           p.require(:name) #throws ActionController::ParameterMissing
         }.permit(:name, :description, :notes)
+    end
+
+    def search_params
+      params.tap { |p|
+        p.require(:tag_id)
+      }.permit(:tag_id)
     end
 end

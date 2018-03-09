@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/codahale/bcrypt-ruby.git
+  revision: f2db689ba567d1a018f4dacb1ccf909adc93e887
+  specs:
+    bcrypt (3.1.11)
+
 GEM
   remote: https://rubygems.org/
   remote: http://insecure.rails-assets.org/
@@ -41,8 +47,6 @@ GEM
     archive-zip (0.7.0)
       io-like (~> 0.3.0)
     arel (6.0.3)
-    bcrypt (3.1.11)
-    bcrypt (3.1.11-x86-mingw32)
     bson (4.2.0)
     builder (3.2.2)
     byebug (9.0.6)
@@ -293,6 +297,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  bcrypt!
   byebug (~> 9.0.6)
   capybara (~> 2.10.1)
   chromedriver-helper (~> 1.0.0)
@@ -308,6 +313,7 @@ DEPENDENCIES
   jquery-rails (~> 4.2.1)
   launchy (~> 2.4.3)
   mini_magick (~> 4.5.1)
+  mongo (~> 2.4.0)
   mongoid (~> 5.1.5)
   mongoid-rspec (~> 3.0.0)
   pg (~> 0.19.0)
@@ -340,4 +346,4 @@ DEPENDENCIES
   webrick (~> 1.3.1)
 
 BUNDLED WITH
-   1.13.6
+   1.16.0.pre.3

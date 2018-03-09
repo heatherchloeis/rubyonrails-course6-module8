@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170304202140) do
+ActiveRecord::Schema.define(version: 20180308225821) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,12 +27,14 @@ ActiveRecord::Schema.define(version: 20170304202140) do
     t.integer  "creator_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
     t.float    "lng"
     t.float    "lat"
   end
 
   add_index "images", ["creator_id"], name: "index_images_on_creator_id", using: :btree
   add_index "images", ["lng", "lat"], name: "index_images_on_lng_and_lat", using: :btree
+  add_index "images", ["user_id"], name: "index_images_on_user_id", using: :btree
 
   create_table "roles", force: :cascade do |t|
     t.integer  "user_id",    null: false
@@ -47,6 +49,12 @@ ActiveRecord::Schema.define(version: 20170304202140) do
   add_index "roles", ["mname", "mid"], name: "index_roles_on_mname_and_mid", using: :btree
   add_index "roles", ["mname"], name: "index_roles_on_mname", using: :btree
   add_index "roles", ["user_id"], name: "index_roles_on_user_id", using: :btree
+
+  create_table "tags", force: :cascade do |t|
+    t.string   "keyword"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "thing_images", force: :cascade do |t|
     t.integer  "image_id",               null: false
@@ -67,9 +75,11 @@ ActiveRecord::Schema.define(version: 20170304202140) do
     t.text     "notes"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "tag_id"
   end
 
   add_index "things", ["name"], name: "index_things_on_name", using: :btree
+  add_index "things", ["tag_id"], name: "index_things_on_tag_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "provider",               default: "email", null: false
@@ -94,6 +104,7 @@ ActiveRecord::Schema.define(version: 20170304202140) do
     t.json     "tokens"
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
+    t.integer  "image_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
@@ -103,4 +114,5 @@ ActiveRecord::Schema.define(version: 20170304202140) do
   add_foreign_key "roles", "users"
   add_foreign_key "thing_images", "images"
   add_foreign_key "thing_images", "things"
+  add_foreign_key "things", "tags"
 end

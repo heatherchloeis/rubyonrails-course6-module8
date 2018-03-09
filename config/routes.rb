@@ -14,12 +14,16 @@ Rails.application.routes.draw do
       get "linkable_things",  controller: :thing_images, action: :linkable_things
     end
     resources :things, except: [:new, :edit] do
+      collection do
+        get 'search'
+      end
       resources :thing_images, only: [:index, :create, :update, :destroy]
     end
     get "images/:id/content", as: :image_content, controller: :images, action: :content, defaults:{format: :jpg}
     get 'geocoder/addresses' => "geocoder#addresses"
     get 'geocoder/positions' => "geocoder#positions"
     get 'subjects' => "thing_images#subjects"
+    resources :tags, only: [:index]
   end      
 
   get "/client-assets/:name.:format", :to => redirect("/client/client-assets/%{name}.%{format}")

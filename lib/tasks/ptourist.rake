@@ -371,6 +371,25 @@ Work up a sweat in our 24-hour StayFit Gym, which features Life Fitness® cardio
 
     puts "#{Thing.count} things created and #{ThingImage.count("distinct thing_id")} with images"
     puts "#{Image.count} images created and #{ThingImage.count("distinct image_id")} for things"
+
+    {Tourism: [
+      "B&O Railroad Museum",
+      "National Aquarium",
+      "Rent-A-Tour"
+    ],
+    Waterfront: [
+      "Baltimore Water Taxi",
+      "National Aquarium"
+    ],
+    Accommodation: [
+      "Holiday Inn Timonium",
+      "Hyatt Place Baltimore"
+    ]}.each do |tag, things|
+      tag = Tag.create(keyword: tag);
+      things.each {|thing| tag.things << Thing.where(name: thing)}
+      tag.save!
+    end
+
   end
 
 end

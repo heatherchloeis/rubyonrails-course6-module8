@@ -58,11 +58,17 @@
 //= require spa-demo/subjects/images/image_linkable_things.service
 //= require spa-demo/subjects/images/images.component
 //= require spa-demo/subjects/images/images_authz.directive
+
 //= require spa-demo/subjects/things/things.service
 //= require spa-demo/subjects/things/thing_images.service
 //= require spa-demo/subjects/things/things_authz.service
 //= require spa-demo/subjects/things/things_authz.directive
 //= require spa-demo/subjects/things/things.component
+
+//= require spa-demo/subjects/tags/tags.service
+//= require spa-demo/subjects/tags/tag_thing.service
+//= require spa-demo/subjects/tags/tag_map.component
+//= require spa-demo/subjects/tags/tags.component
 
 //= require spa-demo/subjects/current_subjects/current_subjects.service
 //= require spa-demo/subjects/current_subjects/current_subjects.component

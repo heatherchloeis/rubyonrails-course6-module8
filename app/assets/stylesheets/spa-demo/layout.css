@@ -1,4 +1,4 @@
-/* 
+/*
  * layout.css
  */
 
@@ -29,11 +29,6 @@ form .invalid {
 .nav li form {
   padding-left: 10px; /* adds spacing along left of dropdown menu form */
   padding-right: 10px;
-}
-
-.navbar-form {
-  margin-left: 0px;
-  margin-right: 0px;
 }
 
 /* get the two origin forms to be side-by-side */
@@ -77,7 +72,7 @@ div.area-pane input[type='checkbox'] {
 
 div.area-pane div.tab-content {
   height: 44vh;
-  overflow-y: auto; 
+  overflow-y: auto;
 }
 div.area-pane.expanded div.tab-content {
   height: 93vh;
@@ -107,7 +102,7 @@ div.area-pane div.tab-pane ul.items li.selected {
 div.areas-pane > ul.tab-label li a {
   line-height: 7px;
   font-size: 0.8em;
-} 
+}
 
 /*** map height ***/
 
@@ -116,6 +111,14 @@ div.area-pane div.tab-content div.tab-pane div#map {
   height: 100%;
 }
 
+div.image-map {
+  height: 650px;
+}
+
+div.tag-map {
+  padding-top: 40px;
+  height: 650px;
+}
 /********************************/
 
 [readonly='readonly'] {
@@ -144,12 +147,12 @@ img.image-preview {
 /*** image viewer ***/
 
 sd-image-viewer img {
-    width: 100%;  
+    width: 100%;
 }
 sd-image-viewer .overlay {
   color: white;
   opacity: 0.0;
-  z-index: 1002;  
+  z-index: 1002;
   cursor: pointer;
 }
 sd-image-viewer .overlay:hover {
@@ -178,7 +181,7 @@ sd-image-viewer .glyphicon {
 sd-image-viewer span.image-browse {
   position: absolute;
   top: 10px;
-  right: 10px;  
+  right: 10px;
   background-color: grey;
 }
 
@@ -252,7 +255,7 @@ sd-image-viewer div.image-items span.id {
     }
     #main-menubar .collapse.in{
         display:block !important;
-    }  
+    }
 }
 
 /* Extra small */
@@ -261,17 +264,16 @@ sd-image-viewer div.image-items span.id {
   .image-content > div {
     display: block;
     margin-left: auto;
-    margin-right: auto 
+    margin-right: auto
   }
 
   .crop-area {
-    margin: 0px;    
+    margin: 0px;
     margin-left: auto;
-    margin-right: auto 
+    margin-right: auto
   }
 }
 
 /* Super-extra small */
 @media (max-width: 479px) {
 }
-
